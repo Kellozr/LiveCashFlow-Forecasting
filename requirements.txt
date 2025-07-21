@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+pandas
+scikit-learn
+joblib
+prophet
+python-multipart
+shap
+python-dotenv

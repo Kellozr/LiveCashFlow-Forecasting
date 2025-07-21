@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  cashflow-system:
+    build: .
+    ports:
+      - "8000:8000"  # FastAPI backend
+      - "8501:8501"  # Streamlit frontend
+    volumes:
+      - ./data:/app/data  # Persist database and CSVs
+      - ./models:/app/models  # Persist trained models
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: >
+      sh -c "uvicorn api.main:app --host 0.0.0.0 --port 8000 &
+      streamlit run frontend/app.py --server.port 8501"
